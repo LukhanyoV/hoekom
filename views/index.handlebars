@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>hoekom</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Status: {{hoekomStatus statusCode}}</h3>
+        </div>
+    </div>
+
+    {{!-- {{#if province}} --}}
+    <div class="row">
+        <h4>Step 1:</h4>
+        <form action="/" method="get">
+            <label for="province">Select your province:</label>
+            <select name="province" id="province">
+                <option value="1">Eastern Cape</option>
+                <option value="2">Free Sate</option>
+                <option value="3">Gauteng</option>
+                <option value="4">KwaZulu-Natal</option>
+                <option value="5">Limpopo</option>
+                <option value="6">Mpumalanga</option>
+                <option value="7">North West</option>
+                <option value="8">Northen Cape</option>
+                <option value="9">Western Cape</option>
+            </select>
+            <button type="submit">next</button>
+        </form>
+    </div>
+    {{!-- {{/if}} --}}
+
+    {{#if municipal}}
+    <div class="row">
+        <h4>Step 2:</h4>
+        <form method="get">
+            <label for="municipal">Select your municipal:</label>
+            <select name="municipal">
+                {{#each municipal}}
+                <option value="{{value}}">{{text}}</option>
+                {{/each}}
+            </select>
+            <label for="search">Seach for suburb: <em>(optional)</em></label>
+            <input type="text" name="search" id="search">
+            <button type="submit">next</button>
+        </form>
+    </div>
+    {{/if}}
+
+    {{#if suburb}}
+    <div class="row">
+        <h4>Step 3:</h4>
+        <form method="get">
+            <label for="suburb">Select your suburb:</label>
+            <select name="suburb" id="suburb">
+                {{#each suburb}}
+                <option value="{{value}}">{{text}}</option>
+                {{/each}}
+            </select>
+            <button type="submit">next</button>
+        </form>
+    </div>
+    {{/if}}
+    {{#if searchFail}}
+    <div class="row">
+        <p>Search results not found, you need to start from Step 1, this time don't fill in the search!</p>
+    </div>
+    {{/if}}
+
+    {{#if timetable}}
+    <div style="display: flex; flex-wrap:wrap;">
+        {{{timetable}}}
+    </div>
+    {{/if}}
+
+</div>
